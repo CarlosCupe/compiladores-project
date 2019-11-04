@@ -16,7 +16,9 @@
                 return INTEGER;
             }
 
-[-+()=/*\n]     { return *yytext; }
+[<>=!&|]        { return *yytext; }
+
+[-+()=/%*^\n]   { return *yytext; }
 
 [ \t]   ;       /* skip whitespace */
 
