@@ -6,17 +6,33 @@
 
 %%
 
+"ANS"       {
+                return ANS;
+            }
+
 [a-z]       {
                 yylval = *yytext - 'a';
                 return VARIABLE;
-                }
+            }
 
 [0-9]+      {
                 yylval = atoi(yytext);
                 return INTEGER;
             }
 
-[<>=!&|]        { return *yytext; }
+"||"        { return OR; }
+"&&"        { return AND; }
+
+"++"        { return SUM; }
+"--"        { return REST; }
+
+"=="        { return EQUAL; }
+"!="        { return NEQUAL; }
+
+"<="        { return LEQUAL; }
+">="        { return GEQUAL; }
+
+[<>=!]        { return *yytext; }
 
 [-+()=/%*^\n]   { return *yytext; }
 
